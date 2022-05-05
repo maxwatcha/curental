@@ -22,6 +22,9 @@ app.use(cors(corsOptions))
 app.use('/api/v1/items', items);
 //test register item
 app.post('/api/v1/item', function(request, response){
+
+   //generate key =
+
    sql.query('insert into item (item_id, item_name, description,catalog,status,lessor_id,current_tenant_id,place,time_stamp) value(?,?,?,?,?,?,?,?,?)',
    [request.body.item_id,request.body.item_name,request.body.description,
       request.body.catalog,request.body.status,request.body.lessor_id,

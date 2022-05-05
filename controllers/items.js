@@ -11,6 +11,17 @@ exports.getItemtest=(req,res,next)=>{
     });
 };
 
+exports.getPendingItem=(req,res,next)=>{
+    ItemCenter.getPending((err,data)=>{
+        if(err)
+        res.status(500).send({
+            message:
+            err.message||"Some error occured while retriving data"
+        });
+        else res.send(JSON.stringify(data));
+    });
+};
+
 
 
 

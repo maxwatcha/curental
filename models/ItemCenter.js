@@ -24,7 +24,19 @@ const ItemCenter = function(cu_rental){
 };
 
 ItemCenter.getAll = result => {
-    sql.query("SELECT * FROM item", (err,res)=>{
+    sql.query("SELECT * FROM item WHERE status != 'pending'", (err,res)=>{
+        if(err) {
+            console.log("eror: ", err);
+            result(null,err);
+            return;
+        }
+        console.log("item: ", res);
+        result(null,res);
+    });
+};
+
+ItemCenter.getPending = result => {
+    sql.query("SELECT * FROM item WHERE status = 'pending'", (err,res)=>{
         if(err) {
             console.log("eror: ", err);
             result(null,err);

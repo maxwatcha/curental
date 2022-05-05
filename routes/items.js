@@ -1,9 +1,9 @@
 const express = require('express');
-const { getItems, getItem, createItems, updateItem, deleteItem,getItemtest} = require ('../controllers/items');
+const { getItems, getItem, createItems, updateItem, deleteItem,getItemtest,getPendingItem} = require ('../controllers/items');
 const router = express.Router();
 
 router.route('/itemCenters').get(getItemtest);
-
+router.route('/itemCenters-pending').get(getPendingItem);
 router.get('/', (req,res) =>{
     res.status(200).json({success:true, msg:'show all item'});
 });
